@@ -1,4 +1,4 @@
-%define version 2.18.0
+%define version 2.18.1
 %define release %mkrel 1
 
 %define major	1
@@ -10,7 +10,7 @@
 
 %define pkgname gconfmm
 %define libname		%mklibname %pkgname %api_version %{major}
-%define libname_orig	%mklibname %pkgname %api_version
+%define develname	%mklibname -d %pkgname %api_version
 
 Name:	 	%{pkgname}%{api_version}
 Summary: 	A C++ interface for GConf library
@@ -36,8 +36,6 @@ gnomemm project, which provides a C++ interface for GNOME libraries.
 %package	-n %{libname}
 Summary:	%{summary}
 Group:		%{group}
-Provides:	%{name} = %{version}-%{release}
-Provides:	%{libname_orig} = %{version}-%{release}
 
 %description -n %{libname}
 This package provides a C++ interface for GConf, a configuration data
@@ -45,14 +43,15 @@ storage mechanism to ship with GNOME.  It is a subpackage of the
 gnomemm project, which provides a C++ interface for GNOME libraries.
 
 
-%package	-n %{libname}-devel
+%package	-n %develname
 Summary:	Headers and development files of GConf 2 C++ wrapper
 Group:		Development/GNOME and GTK+
 Provides:	%{name}-devel = %{version}-%{release}
-Provides:	%{libname_orig}-devel = %{version}-%{release}
+Provides:	libgconfmm%{api_version}-devel = %{version}-%{release}
 Requires:	%{libname} = %{version}
+Obsoletes: %mklibname -d %pkgname %api_version %{major}
 
-%description -n %{libname}-devel
+%description -n %develname
 This package contains the headers and various development files needed,
 when compiling or developing programs which want GConf 2 C++ wrapper.
 
@@ -92,9 +91,9 @@ rm -rf %{buildroot}
 %files -n %{libname}
 %defattr(-, root, root)
 %doc COPYING.LIB
-%{_libdir}/*.so.*
+%{_libdir}/libgconfmm-%{api_version}.so.%{major}*
 
-%files -n %{libname}-devel
+%files -n %develname
 %defattr(-, root, root)
 %doc AUTHORS COPYING.LIB ChangeLog NEWS README
 %{_includedir}/*
