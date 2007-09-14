@@ -1,10 +1,10 @@
-%define version 2.18.1
+%define version 2.20.0
 %define release %mkrel 1
 
 %define major	1
 %define api_version 2.6
 
-%define glibmm_version	2.4.0
+%define glibmm_version	2.6.4
 %define gtkmm_version	2.4.0
 %define gconf_version	2.4.0
 
@@ -49,7 +49,7 @@ Group:		Development/GNOME and GTK+
 Provides:	%{name}-devel = %{version}-%{release}
 Provides:	libgconfmm%{api_version}-devel = %{version}-%{release}
 Requires:	%{libname} = %{version}
-Obsoletes: %mklibname -d %pkgname %api_version %{major}
+Obsoletes: %mklibname -d %pkgname %api_version 1
 
 %description -n %develname
 This package contains the headers and various development files needed,
