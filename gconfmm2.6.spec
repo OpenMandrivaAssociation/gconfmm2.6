@@ -24,6 +24,7 @@ Patch0:		gconfmm-2.12.0-64bit-fixes.patch
 URL:     	http://gtkmm.sourceforge.net/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	libGConf2-devel >= %{gconf_version}
+BuildRequires:	dbus-glib-devel
 BuildRequires:	glibmm2.4-devel >= %{glibmm_version}
 BuildRequires:	gtkmm2.4-devel >= %{gtkmm_version}
 BuildRequires:	doxygen
