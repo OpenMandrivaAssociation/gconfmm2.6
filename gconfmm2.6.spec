@@ -1,5 +1,5 @@
-%define version 2.22.0
-%define release %mkrel 2
+%define version 2.23.1
+%define release %mkrel 1
 
 %define major	1
 %define api_version 2.6
@@ -16,7 +16,8 @@ Name:	 	%{pkgname}%{api_version}
 Summary: 	A C++ interface for GConf library
 Version: 	%version
 Release: 	%release
-License: 	LGPL
+#gw lib is LGPL, tool is GPL
+License: 	LGPLv2+ and GPLv2+
 Group:   	System/Libraries
 Source:  	ftp://ftp.gnome.org/pub/GNOME/sources/%{pkgname}/%{pkgname}-%{version}.tar.bz2
 Patch0:		gconfmm-2.12.0-64bit-fixes.patch
