@@ -1,5 +1,5 @@
-%define version 2.28.0
-%define release %mkrel 2
+%define version 2.28.2
+%define release %mkrel 1
 
 %define major	1
 %define api_version 2.6
@@ -73,23 +73,10 @@ This package provides API documentation of %{pkgname} library.
 %configure2_5x --enable-static
 %make 
 
-### Build doc
-pushd docs/reference
-  perl -pi -e 's/^(HAVE_DOT.*=) YES/$1 NO/' Doxyfile
-  make all
-popd
-
 %install
 rm -rf %{buildroot}
 %makeinstall_std
 find %buildroot -name \*.la|xargs chmod 644
-
-%if %mdkversion < 200900
-%post -n %{libname} -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %{libname} -p /sbin/ldconfig
-%endif
 
 %clean
 rm -rf %{buildroot}
@@ -102,6 +89,8 @@ rm -rf %{buildroot}
 %files -n %develname
 %defattr(-, root, root)
 %doc AUTHORS COPYING.LIB ChangeLog NEWS README
+%doc %_datadir/doc/gconfmm-%api_version
+%doc %_datadir/devhelp/books/gconfmm-%api_version
 %{_includedir}/*
 %{_libdir}/%{pkgname}-%{api_version}
 %{_libdir}/pkgconfig/*.pc
