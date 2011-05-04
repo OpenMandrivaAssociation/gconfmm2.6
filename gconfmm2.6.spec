@@ -27,6 +27,7 @@ BuildRequires:	libGConf2-devel >= %{gconf_version}
 BuildRequires:	dbus-glib-devel
 BuildRequires:	glibmm2.4-devel >= %{glibmm_version}
 BuildRequires:	gtkmm2.4-devel >= %{gtkmm_version}
+BuildRequires:	gnome-common
 BuildRequires:	doxygen
 
 %description
@@ -70,6 +71,7 @@ This package provides API documentation of %{pkgname} library.
 %patch0 -p1 -b .64bit-fixes
 
 %build
+NOCONFIGURE=yes gnome-autogen.sh
 %configure2_5x --enable-static
 %make 
 
