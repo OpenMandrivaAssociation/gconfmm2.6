@@ -1,5 +1,5 @@
-%define version 2.28.2
-%define release %mkrel 2
+%define version 2.28.3
+%define release %mkrel 1
 
 %define major	1
 %define api_version 2.6
@@ -19,7 +19,7 @@ Release: 	%release
 #gw lib is LGPL, tool is GPL
 License: 	LGPLv2+ and GPLv2+
 Group:   	System/Libraries
-Source:  	ftp://ftp.gnome.org/pub/GNOME/sources/%{pkgname}/%{pkgname}-%{version}.tar.bz2
+Source:  	ftp://ftp.gnome.org/pub/GNOME/sources/%{pkgname}/%{pkgname}-%{version}.tar.xz
 Patch0:		gconfmm-2.12.0-64bit-fixes.patch
 URL:     	http://gtkmm.sourceforge.net/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-buildroot
