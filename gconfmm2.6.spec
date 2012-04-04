@@ -96,8 +96,7 @@ rm -rf %{buildroot}
 %{_includedir}/*
 %{_libdir}/%{pkgname}-%{api_version}
 %{_libdir}/pkgconfig/*.pc
-%{_libdir}/*.a
-%{_libdir}/*.la
+%{_libdir}/*.*a
 %{_libdir}/*.so
 
 %files doc
