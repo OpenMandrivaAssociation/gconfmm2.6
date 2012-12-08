@@ -1,5 +1,5 @@
-%define version 2.28.3
-%define release %mkrel 1
+%define version 2.28.2
+%define release %mkrel 3
 
 %define major	1
 %define api_version 2.6
@@ -19,7 +19,7 @@ Release: 	%release
 #gw lib is LGPL, tool is GPL
 License: 	LGPLv2+ and GPLv2+
 Group:   	System/Libraries
-Source:  	ftp://ftp.gnome.org/pub/GNOME/sources/%{pkgname}/%{pkgname}-%{version}.tar.xz
+Source:  	ftp://ftp.gnome.org/pub/GNOME/sources/%{pkgname}/%{pkgname}-%{version}.tar.bz2
 Patch0:		gconfmm-2.12.0-64bit-fixes.patch
 URL:     	http://gtkmm.sourceforge.net/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -76,12 +76,7 @@ NOCONFIGURE=yes gnome-autogen.sh
 %make 
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
-find %buildroot -name \*.la|xargs chmod 644
-
-%clean
-rm -rf %{buildroot}
 
 %files -n %{libname}
 %defattr(-, root, root)
@@ -96,11 +91,129 @@ rm -rf %{buildroot}
 %{_includedir}/*
 %{_libdir}/%{pkgname}-%{api_version}
 %{_libdir}/pkgconfig/*.pc
-%{_libdir}/*.*a
+%{_libdir}/*.a
 %{_libdir}/*.so
 
 %files doc
 %defattr(-, root, root)
 %doc docs/reference/html
 
+
+
+
+%changelog
+* Wed May 04 2011 Funda Wang <fwang@mandriva.org> 2.28.2-2mdv2011.0
++ Revision: 665772
+- fix build
+
+  + Oden Eriksson <oeriksson@mandriva.com>
+    - mass rebuild
+
+* Sun Jul 11 2010 GÃ¶tz Waschk <waschk@mandriva.org> 2.28.2-1mdv2011.0
++ Revision: 550777
+- new version
+- fix documentation build
+
+* Tue Mar 16 2010 Oden Eriksson <oeriksson@mandriva.com> 2.28.0-2mdv2010.1
++ Revision: 521479
+- rebuilt for 2010.1
+
+* Mon Sep 21 2009 GÃ¶tz Waschk <waschk@mandriva.org> 2.28.0-1mdv2010.0
++ Revision: 446589
+- update to new version 2.28.0
+
+* Wed Sep 02 2009 Christophe Fergeau <cfergeau@mandriva.com> 2.24.0-2mdv2010.0
++ Revision: 424554
+- rebuild
+
+* Mon Sep 22 2008 GÃ¶tz Waschk <waschk@mandriva.org> 2.24.0-1mdv2009.0
++ Revision: 286535
+- new version
+
+* Wed Sep 10 2008 GÃ¶tz Waschk <waschk@mandriva.org> 2.23.1-1mdv2009.0
++ Revision: 283474
+- fix build deps
+- new version
+- update license
+
+* Tue Jun 17 2008 Thierry Vignaud <tv@mandriva.org> 2.22.0-2mdv2009.0
++ Revision: 221041
+- rebuild
+
+  + Pixel <pixel@mandriva.com>
+    - do not call ldconfig in %%post/%%postun, it is now handled by filetriggers
+
+* Sun Mar 09 2008 GÃ¶tz Waschk <waschk@mandriva.org> 2.22.0-1mdv2008.1
++ Revision: 183000
+- new version
+
+* Sat Jan 12 2008 Thierry Vignaud <tv@mandriva.org> 2.20.0-2mdv2008.1
++ Revision: 150095
+- rebuild
+- kill re-definition of %%buildroot on Pixel's request
+
+  + Olivier Blin <oblin@mandriva.com>
+    - restore BuildRoot
+
+* Fri Sep 14 2007 GÃ¶tz Waschk <waschk@mandriva.org> 2.20.0-1mdv2008.0
++ Revision: 85537
+- new version
+- new devel name
+- bump deps
+
+* Mon Sep 10 2007 GÃ¶tz Waschk <waschk@mandriva.org> 2.18.1-1mdv2008.0
++ Revision: 84160
+- new version
+- new devel name
+- drop useless provides
+
+
+* Sat Mar 10 2007 GÃ¶tz Waschk <waschk@mandriva.org> 2.18.0-1mdv2007.1
++ Revision: 140341
+- Import gconfmm2.6
+
+* Sat Mar 10 2007 Götz Waschk <waschk@mandriva.org> 2.18.0-1mdv2007.1
+- unpack patch
+- new version
+
+* Wed Aug 23 2006 Götz Waschk <waschk@mandriva.org> 2.16.0-1mdv2007.0
+- New release 2.16.0
+
+* Sat Jun 17 2006 Götz Waschk <waschk@mandriva.org> 2.14.2-1mdv2007.0
+- drop patch 1
+- New release 2.14.2
+
+* Thu Jun 08 2006 Götz Waschk <waschk@mandriva.org> 2.14.1-1mdv2007.0
+- patch to fix the build
+- New release 2.14.1
+
+* Tue Apr 11 2006 GÃ¶tz Waschk <waschk@mandriva.org> 2.14.0-1mdk
+- New release 2.14.0
+- use mkrel
+
+* Sun Oct 09 2005 Götz Waschk <waschk@mandriva.org> 2.12.0-1mdk
+- rediff the patch
+- New release 2.12.0
+
+* Wed Aug 24 2005 Gwenole Beauchesne <gbeauchesne@mandriva.com> 2.10.0-2mdk
+- 64-bit fixes
+
+* Thu Mar 10 2005 GÃ¶tz Waschk <waschk@linux-mandrake.com> 2.10.0-1mdk
+- New release 2.10.0
+
+* Tue Nov 30 2004 Goetz Waschk <waschk@linux-mandrake.com> 2.8.1-1mdk
+- New release 2.8.1
+
+* Wed Nov 10 2004 Götz Waschk <waschk@linux-mandrake.com> 2.8.0-1mdk
+- reenable libtoolize
+- New release 2.8.0
+
+* Fri Jun 18 2004 Abel Cheung <deaddog@deaddog.org> 2.6.1-2mdk
+- Rebuild with new gcc
+
+* Sat May 15 2004 Abel Cheung <deaddog@deaddog.org> 2.6.1-1mdk
+- New version
+
+* Thu Apr 29 2004 Abel Cheung <deaddog@deaddog.org> 2.6.0-1mdk
+- New major release
 
