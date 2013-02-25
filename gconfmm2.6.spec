@@ -46,7 +46,6 @@ gnomemm project, which provides a C++ interface for GNOME libraries.
 Summary:	Headers and development files of GConf 2 C++ wrapper
 Group:		Development/GNOME and GTK+
 Provides:	%{name}-devel = %{version}-%{release}
-Provides:	libgconfmm%{api_version}-devel = %{version}-%{release}
 Requires:	%{libname} = %{version}
 Obsoletes:	%mklibname -d %pkgname %api_version 1
 
