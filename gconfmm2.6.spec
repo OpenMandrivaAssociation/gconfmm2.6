@@ -79,7 +79,7 @@ NOCONFIGURE=yes gnome-autogen.sh
 
 %files -n %{devname}
 %doc AUTHORS COPYING.LIB ChangeLog NEWS README
-%doc %{_datadi}r/doc/gconfmm-%api_version
+%doc %{_datadir}/doc/gconfmm-%api_version
 %doc %{_datadir}/devhelp/books/gconfmm-%api_version
 %{_includedir}/*
 %{_libdir}/%{pkgname}-%{api_version}
