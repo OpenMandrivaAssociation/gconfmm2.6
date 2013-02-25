@@ -65,10 +65,10 @@ This package provides API documentation of %{pkgname} library.
 %prep
 %setup -q -n %{pkgname}-%{version}
 %patch0 -p1 -b .64bit-fixes~
+NOCONFIGURE=yes gnome-autogen.sh
 
 %build
-NOCONFIGURE=yes gnome-autogen.sh
-%configure2_5x --enable-static
+%configure2_5x	--enable-static
 %make 
 
 %install
