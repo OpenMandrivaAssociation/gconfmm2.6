@@ -1,6 +1,3 @@
-%define version 2.28.3
-%define release %mkrel 1
-
 %define major	1
 %define api_version 2.6
 
@@ -8,21 +5,20 @@
 %define gtkmm_version	2.4.0
 %define gconf_version	2.4.0
 
-%define pkgname gconfmm
-%define libname		%mklibname %pkgname %api_version %{major}
-%define develname	%mklibname -d %pkgname %api_version
+%define	pkgname	gconfmm
+%define	libname	%mklibname %{pkgname} %{api_version} %{major}
+%define	devname	%mklibname -d %{pkgname} %{api_version}
 
 Name:	 	%{pkgname}%{api_version}
 Summary: 	A C++ interface for GConf library
-Version: 	%version
-Release: 	%release
+Version:	2.28.3
+Release: 	2
 #gw lib is LGPL, tool is GPL
 License: 	LGPLv2+ and GPLv2+
 Group:   	System/Libraries
-Source:  	ftp://ftp.gnome.org/pub/GNOME/sources/%{pkgname}/%{pkgname}-%{version}.tar.xz
+Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/%{pkgname}/%{pkgname}-%{version}.tar.xz
 Patch0:		gconfmm-2.12.0-64bit-fixes.patch
-URL:     	http://gtkmm.sourceforge.net/
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-buildroot
+URL:		http://gtkmm.sourceforge.net/
 BuildRequires:	libGConf2-devel >= %{gconf_version}
 BuildRequires:	dbus-glib-devel
 BuildRequires:	glibmm2.4-devel >= %{glibmm_version}
@@ -36,25 +32,25 @@ storage mechanism to ship with GNOME.  It is a subpackage of the
 gnomemm project, which provides a C++ interface for GNOME libraries.
 
 
-%package	-n %{libname}
+%package -n	%{libname}
 Summary:	%{summary}
 Group:		%{group}
 
-%description -n %{libname}
+%description -n	%{libname}
 This package provides a C++ interface for GConf, a configuration data
 storage mechanism to ship with GNOME.  It is a subpackage of the
 gnomemm project, which provides a C++ interface for GNOME libraries.
 
 
-%package	-n %develname
+%package -n	%{devname}
 Summary:	Headers and development files of GConf 2 C++ wrapper
 Group:		Development/GNOME and GTK+
 Provides:	%{name}-devel = %{version}-%{release}
 Provides:	libgconfmm%{api_version}-devel = %{version}-%{release}
 Requires:	%{libname} = %{version}
-Obsoletes: %mklibname -d %pkgname %api_version 1
+Obsoletes:	%mklibname -d %pkgname %api_version 1
 
-%description -n %develname
+%description -n	%{devname}
 This package contains the headers and various development files needed,
 when compiling or developing programs which want GConf 2 C++ wrapper.
 
@@ -67,8 +63,8 @@ This package provides API documentation of %{pkgname} library.
 
 
 %prep
-%setup -q -n %pkgname-%version
-%patch0 -p1 -b .64bit-fixes
+%setup -q -n %{pkgname}-%{version}
+%patch0 -p1 -b .64bit-fixes~
 
 %build
 NOCONFIGURE=yes gnome-autogen.sh
@@ -76,23 +72,16 @@ NOCONFIGURE=yes gnome-autogen.sh
 %make 
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
-find %buildroot -name \*.la|xargs chmod 644
-
-%clean
-rm -rf %{buildroot}
 
 %files -n %{libname}
-%defattr(-, root, root)
 %doc COPYING.LIB
 %{_libdir}/libgconfmm-%{api_version}.so.%{major}*
 
-%files -n %develname
-%defattr(-, root, root)
+%files -n %{devname}
 %doc AUTHORS COPYING.LIB ChangeLog NEWS README
-%doc %_datadir/doc/gconfmm-%api_version
-%doc %_datadir/devhelp/books/gconfmm-%api_version
+%doc %{_datadi}r/doc/gconfmm-%api_version
+%doc %{_datadir}/devhelp/books/gconfmm-%api_version
 %{_includedir}/*
 %{_libdir}/%{pkgname}-%{api_version}
 %{_libdir}/pkgconfig/*.pc
@@ -100,7 +89,4 @@ rm -rf %{buildroot}
 %{_libdir}/*.so
 
 %files doc
-%defattr(-, root, root)
 %doc docs/reference/html
-
-
