@@ -19,10 +19,10 @@ Group:   	System/Libraries
 Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/%{pkgname}/%{pkgname}-%{version}.tar.xz
 Patch0:		gconfmm-2.12.0-64bit-fixes.patch
 URL:		http://gtkmm.sourceforge.net/
-BuildRequires:	libGConf2-devel >= %{gconf_version}
-BuildRequires:	dbus-glib-devel
-BuildRequires:	glibmm2.4-devel >= %{glibmm_version}
-BuildRequires:	gtkmm2.4-devel >= %{gtkmm_version}
+BuildRequires:	pkgconfig(gconf-2.0)
+BuildRequires:	pkgconfig(dbus-glib-1)
+BuildRequires:	pkgconfig(glibmm-2.4)
+BuildRequires:	pkgconfig(gtkmm-2.4)
 BuildRequires:	gnome-common
 BuildRequires:	doxygen
 
