@@ -9,7 +9,7 @@
 Name:	 	%{pkgname}%{api}
 Summary:	A C++ interface for GConf library
 Version:	2.28.3
-Release:	6
+Release:	7
 License:	LGPLv2+ and GPLv2+
 Group:		System/Libraries
 Url:		http://gtkmm.sourceforge.net/
