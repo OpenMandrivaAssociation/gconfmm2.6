@@ -51,7 +51,7 @@ when compiling or developing programs which want GConf 2 C++ wrapper.
 
 %prep
 %setup -qn %{pkgname}-%{version}
-%apply_patches
+%autopatch -p1
 NOCONFIGURE=yes gnome-autogen.sh
 
 %build
