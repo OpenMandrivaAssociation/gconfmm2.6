@@ -12,7 +12,7 @@ Version:	2.28.3
 Release:	15
 License:	LGPLv2+ and GPLv2+
 Group:		System/Libraries
-Url:		http://gtkmm.sourceforge.net/
+Url:		https://gtkmm.sourceforge.net/
 Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/%{pkgname}/%{url_ver}/%{pkgname}-%{version}.tar.xz
 Patch0:		gconfmm-2.12.0-64bit-fixes.patch
 
