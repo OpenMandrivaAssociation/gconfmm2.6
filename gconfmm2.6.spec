@@ -16,6 +16,11 @@ Url:		https://gtkmm.sourceforge.net/
 Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/%{pkgname}/%{url_ver}/%{pkgname}-%{version}.tar.xz
 Patch0:		gconfmm-2.12.0-64bit-fixes.patch
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	doxygen
 BuildRequires:	gnome-common
 BuildRequires:	pkgconfig(gconf-2.0)
